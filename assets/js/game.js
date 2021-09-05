@@ -12,8 +12,9 @@ var enemyAttack = 12;
 
 // create function
 var fight = function(enemyName) {
-    //Alert players that they are starting the round
-    window.alert("Welcome to Robot Gladiators!");
+  // repeat and execute as long as the enemy-robot is alive
+  while(enemyHealth > 0) {
+    // place fight function code block here...
     var promptFight = window.prompt("would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
     // if player choses to fight, then fight
     if (promptFight === "fight" || promptFight === "FIGHT") {
@@ -54,7 +55,6 @@ else {
    window.alert(playerName + " has chosen to skip the fight. Goodbye!");
    // subtract money from playerMoney for skipping
    playerMoney = playerMoney - 2;
-   console.log("playerMoney", playerMoney);
  }
   // if no (false), ask question again by running fight() again
   else {
@@ -64,21 +64,14 @@ else {
  else {
    window.alert("you need to choose a valid option. Tty again!");
  }
-  //putt new code under this
- enemyHealth = enemyHealth - playerAttack;
-  console.log(
-    playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining.");
-  
-// put new code under this
- playerHealth = playerHealth - enemyAttack;
-console.log(
-  enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining. "
-  );
-  
+  }
 };
 // execute function 
 for(var i = 0; i < enemyNames.length; i++) {
-  fight(enemyNames[i]);
+  var pickedEnemyName = enemyNames[i];
+  enemyHealth = 50;
+  //call fight function with enemy-robot
+  fight(pickedEnemyName);
 }
   
 
